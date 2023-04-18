@@ -127,7 +127,16 @@ namespace Lab5
                 //     if node is white
                 //        connectedComponents++
                 //        explore the neighbors
-                //        
+                //
+
+                foreach (Node node in Nodes)
+                {
+                    if (node.Color == Color.White)
+                    {
+                        connectedComponents++;
+                        DFS(node);
+                    }
+                }
 
                 return connectedComponents;
             }
@@ -143,9 +152,19 @@ namespace Lab5
         /// <returns> true if node1 is reachable through any path from node2.</returns>
         public bool IsReachable(string nodename1, string nodename2)
         {
+            Node node1 = GetNodeByName(nodename1);
+            Node node2 = GetNodeByName(nodename2);
             ResetNodeColor();
+            DFS(node1);
+            if (node2.Color != Color.White)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-            return false;
         }
 
         // TODO
