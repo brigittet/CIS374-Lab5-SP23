@@ -128,7 +128,7 @@ namespace Lab5
                 //        connectedComponents++
                 //        explore the neighbors
                 //
-
+                ResetNodeColor();
                 foreach (Node node in Nodes)
                 {
                     if (node.Color == Color.White)
@@ -156,13 +156,13 @@ namespace Lab5
             Node node2 = GetNodeByName(nodename2);
             ResetNodeColor();
             DFS(node1);
-            if (node2.Color != Color.White)
+            if (node2.Color == Color.White)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
 
         }
